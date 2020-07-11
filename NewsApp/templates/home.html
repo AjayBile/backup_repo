@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block content %}
+{% for post in posts %}
+<article class="media content-section">
+  <div class="media-body">
+    <div class="article-metadata">
+      <small class="text-muted">Date Published on {{ post.start_year }}-{{ post.end_year }}</small>
+      <small class="text-muted"></small>
+    </div>
+    <h2><a class="article-title" href="{{ url_for('post', post_id=post.lccn) }}">{{ post.title }}</a></h2>
+      {% if post.note %}
+      <p class="article-content">{{ post.note[0] }}</p>
+      {% else %}
+      <p class="article-content">Description not available</p>
+      {% endif %}
+  </div>
+</article>
+{% endfor %}
+<div class="clearfix">
+  <a class="btn btn-primary float-left" href="{{ prev }}">&larr;Previous</a>
+  <small class="center">{{ page }} of {{ last }}</small>
+  <a class="btn btn-primary float-right" href="{{ next }}">Next &rarr;</a>
+</div>
+{% endblock content %}

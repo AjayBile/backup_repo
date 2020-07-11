@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block content %}
+{% for item in post.items() %}
+<div>
+    <dt>{{ item[0] }}</dt>
+    {% if item[0] == "url" %}
+        <a href="{{ item[1] }}">{{ item[1] }}</a>
+    {% elif item[0] == "id" %}
+        <a href="https://chroniclingamerica.loc.gov{{ item[1] }}">{{ item[1] }}</a>
+    {% else %}
+        <a>{{ item[1] }}</a>
+    {% endif %}
+</div>
+{% endfor %}
+{% endblock content %}
